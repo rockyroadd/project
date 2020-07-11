@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     voteName: function(userActivityId) {
-      // console.log("VOTE NAME" + userActivityId + userActivityId + this.$store.getters.user.id);
+      console.log("VOTE NAME" + userActivityId + userActivityId + this.$store.getters.user.id);
       axios.post(
           'https://cscampproject.yuzudigital.com/voteUserByUserActivityId',
           {
@@ -99,11 +99,11 @@ export default {
               obj["date"] = response.data.data.result[i].registerDate;
               obj["status"] = response.data.data.isSucceed;
               obj["username"] = response.data.data.result[i].username;
-              obj["userActivityId"] =
-                response.data.data.result[i].userActivityId;
+              obj["userActivityId"] = response.data.data.result[i].userActivityId;
 
               this.items.push(obj);
             }
+            console.log(this.items)
           }
         },
         error => {

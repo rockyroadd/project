@@ -13,7 +13,7 @@
             <p>{{ this.calendar.eventdescription }}</p>
             <span v-if="$store.getters.user.userType != 'AJ'">
               <button v-if="this.myevent.includes(this.calendar.eventname)" class="btn btn-warning w-100 mt-3" disabled>ลงทะเบียนร่วมงาน</button>
-              <button v-else class="btn btn-outline-warning w-100 mt-3" @click="regisActivity(calendar.eventname)">ลงทะเบียนร่วมงาน</button>
+              <button v-else class="btn btn-outline-warning w-100 mt-3" @click.once="regisActivity(calendar.eventname)">ลงทะเบียนร่วมงาน</button>
             </span>
           </div>
         </b-modal>
@@ -71,25 +71,31 @@ export default {
       });
     },
     regisActivity(eventname){
-      axios.post('https://cscampproject.yuzudigital.com/regisActivity', {
-          userId: this.$store.getters.user.id,
-          activityName: this.calendar.eventname,
-          activityDate: this.calendar.eventdate
-        })
-        .then((response) => {
-          if(response.data.response_description == 'SUCCESS'){
-            this.getData();
-            this.$toast.open({
-              message: "บันทึกข้อมูล",
-              position: "top-right",
-              type: "success",
-              duration: 5000,
-              dismissible: true
-            });
-          }
-        }, (error) => {
-          console.log(error);
-        });
+      if(this.myevent.includes(this.calendar.eventname)){
+        console.log("Include")
+      }
+      else{
+        console.log("Exclude")
+        axios.post('https://cscampproject.yuzudigital.com/regisActivity', {
+            userId: this.$store.getters.user.id,
+            activityName: this.calendar.eventname,
+            activityDate: this.calendar.eventdate
+          })
+          .then((response) => {
+            if(response.data.response_description == 'SUCCESS'){
+              this.getData();
+              this.$toast.open({
+                message: "บันทึกข้อมูล",
+                position: "top-right",
+                type: "success",
+                duration: 5000,
+                dismissible: true
+              });
+            }
+          }, (error) => {
+            console.log(error);
+          });
+        }
     },
     handleDateClick(info) {
       // console.log(info.event.start)
