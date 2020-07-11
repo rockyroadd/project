@@ -33,6 +33,15 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+pdfMake.fonts = {
+  Sarabun: {
+    normal: 'Sarabun-Regular.ttf',
+    bold: 'Sarabun-Bold.ttf',
+    italics: 'Sarabun-Italic.ttf',
+    bolditalics: 'Sarabun-BoldItalic.ttf'
+  }
+}
+
   export default {
     data() {
       return {
@@ -60,6 +69,9 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
                 {text: 'Computer Science', style: 'certby2', margin: [ 0, 2, 0, 0 ]},
                 {text: 'Department', style: 'certby2', margin: [ 0, 2, 0, 0 ]},
             ],
+            defaultStyle: {
+              font: 'Sarabun'
+            },
             styles: {
                 header: {
                     fontSize: 30,
