@@ -14,7 +14,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="รหัสผ่าน:" label-for="password">
+      <b-form-group  id="input-group-2" label="รหัสผ่าน:" label-for="password">
         <b-form-input
           id="password"
           v-model="form.password"

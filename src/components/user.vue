@@ -34,6 +34,7 @@
           </span>
           <span v-if="$store.getters.user.userType == 'AJ'">
             <b-nav-item href="/approve"><b-icon icon="clock-history" font-scale="1.3"></b-icon> อนุมัติใบรับรอง</b-nav-item>
+            <b-nav-item href="/admin-activity"><b-icon icon="file-earmark" font-scale="1.3"></b-icon> กิจกรรม</b-nav-item>
           </span>
           <b-nav-item @click="userLogout"><b-icon icon="box-arrow-in-right" font-scale="1.3"></b-icon> ออกจากระบบ</b-nav-item>
           <!-- <button class="btn btn-outline-dark" @click="userLogout">Logout</button> -->

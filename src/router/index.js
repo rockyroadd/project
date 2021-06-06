@@ -6,6 +6,8 @@ import activityvote from '@/components/activity-vote'
 import transcriptrequest from '@/components/transcript-request'
 import printed from '@/components/transcript-printed'
 import approve from '@/components/transcript-approve'
+import adminactivity from '@/components/admin-activity'
+
 
 Vue.use(Router)
 
@@ -43,6 +45,11 @@ export default new Router({
       path: '/approve',
       name: 'approve',
       component: approve,
+    },
+    {
+      path: '/admin-activity',
+      name: 'adminactivity',
+      component: adminactivity,
     },
   ]
 })
